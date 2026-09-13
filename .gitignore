@@ -1,0 +1,31 @@
+# Credentials and device certificates. Never commit these.
+credentials/
+*.pem
+*.key
+*.crt
+*.p12
+.env
+.env.*
+
+# Course submission artifacts
+Zip/
+*.zip
+
+# Working notes. These contain the account ID and review notes, keep them out.
+Claude outputs/
+*.review.md
+
+# Model and embedding stores
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
