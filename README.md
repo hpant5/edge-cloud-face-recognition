@@ -2,7 +2,16 @@
 
 A two-stage inference pipeline. Face **detection** runs on an edge device, face **recognition** runs in the cloud on containerised PyTorch, and the two stages are joined by asynchronous SQS queues rather than by a direct call.
 
+Edge-to-cloud face recognition. An IoT Greengrass component runs MTCNN detection on-device and ships only the cropped face, short-circuiting frames with no face before they reach the cloud. A containerised PyTorch Lambda handles recognition, with async SQS queues decoupling the two stages.
+
 The point of the split is that detection is cheap and recognition is expensive. Doing detection at the edge means the only thing that ever crosses the network is a 240x240 cropped face instead of a full frame, and frames with no face in them never reach the cloud at all.
+
+
+
+Topics:
+
+aws-lambda, aws-sqs, aws-greengrass, edge-computing, serverless, pytorch, face-recognition, mqtt, iot, distributed-systems
+
 
 ## Architecture
 
